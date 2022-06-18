@@ -1,0 +1,54 @@
+class Solution{
+    int minEle;
+    stack<int> s;
+    public:
+    
+    
+    int min=-1;
+    
+    
+    
+       /*returns min element from stack*/
+       int getMin(){
+          if(s.empty())return -1;
+          else return min;
+       }
+       
+       /*returns poped element from stack*/
+       int pop(){
+           
+          if(s.empty())return -1;
+     
+        int a=s.top();
+        if(a<min){
+            int ans=min;
+            min=2*min-a;
+            s.pop();
+            return ans;
+        }
+       s.pop();
+        return a;
+      
+       }
+       
+       /*push element x into the stack*/
+       void push(int x){
+           
+       if(s.empty()){
+           min=x;
+           s.push(x);
+       }      
+           
+       else if(!s.empty()){
+        
+        if(x>=min)s.push(x);
+        
+        else{
+          s.push(2*x-min);  
+          min=x;
+        }
+    
+       }    
+           
+       }
+};
